@@ -33,7 +33,6 @@ class Solution(object):
                 if n2 not in shortest:
                     heapq.heappush(minheap, [w1+w2, n2])
         
-        print(shortest)
         if len(shortest) == n:
             return time
         else:
