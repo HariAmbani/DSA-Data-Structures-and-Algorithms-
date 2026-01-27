@@ -22,7 +22,7 @@ class Solution(object):
         minheap = [[0, k]]
         time = 0
 
-        while minheap:
+        while minheap and len(shortest) < n:
             w1, n1 = heapq.heappop(minheap)
             if n1 in shortest:
                 continue
