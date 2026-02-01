@@ -5,7 +5,14 @@ class Solution(object):
         :rtype: int
         """
         first = nums[0]
-        nums_two = nums[1:]
-        nums_two.sort()
-        return first+nums_two[0]+nums_two[1]
+        second = float("inf")
+        third = float("inf")
+        for i in nums[1:]:
+            if i < second:
+                third = second
+                second = i
+            elif i < third:
+                third = i
+        
+        return (first+second+third)
         
