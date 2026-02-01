@@ -1,11 +1,9 @@
 from collections import deque
-
 class Solution(object):
     def openLock(self, deadends, target):
-
         dead = set(deadends)
 
-        if "0000" in dead:
+        if "0000" in dead or target in dead:
             return -1
         if target == "0000":
             return 0
