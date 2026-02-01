@@ -18,36 +18,33 @@ class Solution(object):
 
             return res
 
-        front = {"0000": 0}
-        back = {target: 0}
+        front = {"0000" : 0}
+        back = {target : 0}
 
         q1 = deque(["0000"])
         q2 = deque([target])
 
         while q1 and q2:
-
-            # always expand smaller queue
+            # in multidimensional bfs always go with minium length queue
             if len(q1) > len(q2):
                 q1, q2 = q2, q1
                 front, back = back, front
-
-            for _ in range(len(q1)):
+            
+            for i in range(len(q1)):
                 lock = q1.popleft()
                 step = front[lock]
 
-                for nxt in children(lock):
-
-                    if nxt in dead:
+                for child in children(lock):
+                    if child in dead:
                         continue
-
-                    if nxt in front:
+                    
+                    if child in front:
                         continue
-
-                    # 🔥 meeting point
-                    if nxt in back:
-                        return step + 1 + back[nxt]
-
-                    front[nxt] = step + 1
-                    q1.append(nxt)
+                    
+                    if child in back:
+                        return step+1+back[child]
+                    
+                    front[child] = step + 1
+                    q1.append(child)
 
         return -1
