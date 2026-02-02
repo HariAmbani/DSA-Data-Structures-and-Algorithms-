@@ -1,18 +1,30 @@
-class Solution(object):
+class Solution:
     def intToRoman(self, num):
-        """
-        :type num: int
-        :rtype: str
-        """
-        int_to_roman = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"), (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I"),]
+        # List of tuples: (value, symbol), in descending order
+        values = [
+            (1000, "M"),
+            (900, "CM"),
+            (500, "D"),
+            (400, "CD"),
+            (100, "C"),
+            (90, "XC"),
+            (50, "L"),
+            (40, "XL"),
+            (10, "X"),
+            (9, "IX"),
+            (5, "V"),
+            (4, "IV"),
+            (1, "I")
+        ]
+        
+        result = []
 
-        ans = ""
-        for value, symbol in int_to_roman:
+        for value, symbol in values:
             while num >= value:
-                ans += symbol
+                result.append(symbol)
                 num -= value
-        return ans
 
+        return "".join(result)
 
         # my initial solution
         # int_to_roman = {
