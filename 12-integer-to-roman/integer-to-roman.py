@@ -23,7 +23,6 @@ class Solution:
             while num >= value:
                 result.append(symbol)
                 num -= value
-
         return "".join(result)
 
         # my initial solution
