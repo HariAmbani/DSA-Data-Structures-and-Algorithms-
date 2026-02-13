@@ -4,24 +4,24 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        if len(s) == 1:
+            return 1
         n = len(s)
-        ans = 1
+        ans = 0
+        maxi = 0
 
-        for i in range(n):
-            freq = [0] * 26
-
+        i = 0
+        while i < n and ans < n-i:
+            freq = {}
+            maxi = 1
             for j in range(i, n):
-                idx = ord(s[j]) - ord('a')
-                freq[idx] += 1
-
-                # Collect all non-zero frequencies
-                counts = []
-                for x in freq:
-                    if x > 0:
-                        counts.append(x)
-
-                # Balanced condition: all counts equal
-                if len(set(counts)) == 1:
-                    ans = max(ans, j - i + 1)
-
+                if s[j] not in freq:
+                    freq[s[j]] = 1
+                else:
+                    freq[s[j]] += 1
+                    maxi = max(maxi, freq[s[j]])
+                if freq[s[j]] == maxi:
+                    if (len(set(freq.values()))==1):
+                        ans = max(ans, j-i+1)
+            i += 1
         return ans
