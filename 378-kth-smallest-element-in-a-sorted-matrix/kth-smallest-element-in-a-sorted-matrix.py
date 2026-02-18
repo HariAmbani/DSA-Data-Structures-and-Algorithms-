@@ -1,26 +1,22 @@
 import heapq
+
 class Solution(object):
     def kthSmallest(self, matrix, k):
-        """
-        :type matrix: List[List[int]]
-        :type k: int
-        :rtype: int
-        """
-        side = len(matrix)
+        n = len(matrix)
 
-        if side == 1:
-            return matrix[0][0]
+        # Min heap will store: (value, row, col)
+        heap = []
 
-        sorted_elements = matrix[0]
+        # Step 1: Push first element of each row
+        for r in range(n):
+            heapq.heappush(heap, (matrix[r][0], r, 0))
 
-        for i in range(1, side):
-            for j in range(side):
-                heapq.heappush(sorted_elements, matrix[i][j])
+        # Step 2: Pop k times
+        for _ in range(k):
+            val, r, c = heapq.heappop(heap)
 
-        for i in range(k):
-            ans = heapq.heappop(sorted_elements)
-        
-        return ans
+            # Step 3: Push next element in same row
+            if c + 1 < n:
+                heapq.heappush(heap, (matrix[r][c + 1], r, c + 1))
 
-
-        
+        return val
