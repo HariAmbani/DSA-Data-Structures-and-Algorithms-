@@ -16,8 +16,6 @@ class Solution(object):
         for i in range(1, side):
             for j in range(side):
                 heapq.heappush(sorted_elements, matrix[i][j])
-        
-        print(sorted_elements)
 
         for i in range(k):
             ans = heapq.heappop(sorted_elements)
