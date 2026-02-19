@@ -4,21 +4,19 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        count = []
-
+        ans = 0
+        prev = 0
         cur = 1
+
         for i in range(1, len(s)):
             if s[i-1] == s[i]:
                 cur += 1
             else:
-                count.append(cur)
+                ans += min(prev, cur)
+                prev = cur
                 cur = 1
-        count.append(cur)
-        
-        ans = 0
 
-        for i in range(1, len(count)):
-            ans += min(count[i], count[i-1])
+        ans += min(prev, cur)
         
         return ans
 
