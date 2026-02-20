@@ -32,10 +32,6 @@ class Solution(object):
             else:
                 path_map_to[j] = [i]
         
-        print(path_map_from)
-        print(path_map_to)
-        #print(to_see)
-        
         stack = []
         seen = 0
 
@@ -57,7 +53,6 @@ class Solution(object):
                     else:
                         path_map_from[j] -= 1
                 stack = cur
-                print("stack : ", stack)
                 
         if seen == numCourses:
             return True
