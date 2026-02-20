@@ -1,42 +1,33 @@
-class Solution(object):
+from collections import deque
+
+class Solution:
     def canFinish(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
-        preMap = { i:[] for i in range(numCourses)}
-
-        for crs, pre in prerequisites:
-            preMap[crs].append(pre)
-
-        visitSet = set()
-
-        def dfs(crs):
-            if crs in visitSet:
-                return False
-            if preMap[crs] == []:
-                return True
-            
-            visitSet.add(crs)
-            for pre in preMap[crs]:
-                if not dfs(pre):
-                    return False
-            
-            visitSet.remove(crs)
-            preMap[crs] = []
-            return True
         
-        for crs in range(numCourses):
-            if not dfs(crs):
-                return False
         
-        return True
-
-
+        graph = [[] for _ in range(numCourses)]
+        indegree = [0] * numCourses
+        
+        for course, prereq in prerequisites:
+            graph[prereq].append(course)
+            indegree[course] += 1
+        
+        
+        queue = deque()
+        for i in range(numCourses):
+            if indegree[i] == 0:
+                queue.append(i)
+        
+        count = 0
+        
+        while queue:
+            node = queue.popleft()
+            count += 1
             
-            
-
-
+            for neighbor in graph[node]:
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        return count == numCourses
 
         
