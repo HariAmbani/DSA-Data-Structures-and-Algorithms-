@@ -16,7 +16,7 @@ class Solution(object):
 
         for i in range(n):
             for j in range(n):
-                if isConnected[i][j] == 1:
+                if i != j and isConnected[i][j] == 1:
                     graph[i].add(j)
 
         print(graph)
