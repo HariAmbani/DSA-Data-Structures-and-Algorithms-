@@ -7,14 +7,15 @@ class Solution(object):
         if n == 1:
             return 1
 
-        fibonacci = [1,1]
+        one = 1
+        two = 1
 
         for i in range(2, n+1):
-            next_value = fibonacci[0] + fibonacci[1]
-            fibonacci[0] = fibonacci[1]
-            fibonacci[1] = next_value
+            temp = two
+            two = one+two
+            one = temp
         
-        return next_value
+        return two
         
 
 
