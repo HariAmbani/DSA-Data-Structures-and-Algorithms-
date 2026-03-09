@@ -6,14 +6,11 @@ class Solution(object):
         """
 
         def decimal_to_binary_converter(n):
-            ans = ""
+            ans = []
             while n > 0:
-                if n % 2 == 0:
-                    ans += "0"
-                else:
-                    ans += "1"
+                ans.append(str(n % 2))
                 n //= 2
-            return ans
+            return "".join(ans)
         
         binary = decimal_to_binary_converter(n)
         
