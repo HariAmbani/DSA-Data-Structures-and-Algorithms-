@@ -5,29 +5,25 @@ class Solution(object):
         :rtype: int
         """
 
-        def decimal_to_binary_converter(n):
-            ans = []
-            while n > 0:
-                ans.append(str(n % 2))
-                n //= 2
-            return "".join(ans)
-        
-        binary = decimal_to_binary_converter(n)
-        
         ans = 0
+
         i = 0
-        
-        while i < len(binary):
-            if binary[i] == "1":
+
+        while i < 32:
+            if ((n >> i) & 1):
+                j = i
                 count = 1
                 i += 1
-                while i < len(binary) and binary[i] != "1":
-                    count += 1
+                while i < 32 and ((n >> i) & 1) != 1:
                     i += 1
-                if i < len(binary):
-                    ans = max(ans, count)
+                    count += 1
+                if ((n >> i) & 1) == 1:
+                    ans = max(ans, i-j)
             else:
                 i += 1
-         
-        return ans 
+        return ans
+
+
+
+
         
