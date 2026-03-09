@@ -16,20 +16,15 @@ class Solution(object):
             return ans
         
         binary = decimal_to_binary_converter(n)
-        print(binary)
         
         ans = 0
         i = 0
         
         while i < len(binary):
             if binary[i] == "1":
-                print("start")
                 count = 1
                 i += 1
-                print(i)
                 while i < len(binary) and binary[i] != "1":
-                    print("i : ", i)
-                    print("count : ", count)
                     count += 1
                     i += 1
                 if i < len(binary):
