@@ -9,12 +9,11 @@ class Solution(object):
         rows = len(mat)
         cols = len(mat[0])
 
-        rows_contain_one = set()
-        cols_contain_one = set()
+        indexes_not_to_check = set()
 
         for i in range(rows):
             for j in range(cols):
-                if mat[i][j] == 1:
+                if mat[i][j] == 1 and (i,j) not in indexes_not_to_check:
                     a_found = 0
                     b_found = 0
                     for a in range(rows):
@@ -22,6 +21,7 @@ class Solution(object):
                             continue
                         if mat[a][j] == 1:
                             a_found = 1
+                            indexes_not_to_check.add((a,j))
                             break
                     if a_found == 0:
                         for b in range(cols):
@@ -29,6 +29,7 @@ class Solution(object):
                                 continue
                             if mat[i][b] == 1:
                                 b_found = 1
+                                indexes_not_to_check.add((i,b))
                                 break
                         if b_found == 0:
                             ans += 1
