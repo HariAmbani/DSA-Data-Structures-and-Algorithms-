@@ -26,15 +26,16 @@ class TimeMap(object):
         if key not in self.timemap_dict:
             return ""
         
+        arr = self.timemap_dict[key]
         start = 0
-        end = len(self.timemap_dict[key])-1
+        end = len(arr)-1
 
         ans = ""
         while start <= end:
             mid = (start+end)//2
 
-            if self.timemap_dict[key][mid][0] <= timestamp:
-                ans = self.timemap_dict[key][mid][1]
+            if arr[mid][0] <= timestamp:
+                ans = arr[mid][1]
                 start = mid + 1
             
             else:
