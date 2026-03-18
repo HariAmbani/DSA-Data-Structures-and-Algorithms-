@@ -12,7 +12,9 @@ class Solution(object):
 
         for i in range(rows):
             row = sorted(matrix[i], reverse=True)
-            for j in range(cols):
-                ans = max(ans, row[j] * (j + 1))
+            for j in range(len(row)):
+                if row[j] == 0:
+                    break
+                ans = max(ans, row[j]*(j+1))
 
         return ans
