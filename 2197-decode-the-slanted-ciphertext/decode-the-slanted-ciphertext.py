@@ -11,7 +11,7 @@ class Solution(object):
 
         ans = []
         total_count = len(encodedText)
-        cols = total_count/rows
+        cols = total_count//rows
 
         for i in range(cols):
             j = i
