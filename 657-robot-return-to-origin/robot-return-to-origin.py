@@ -10,11 +10,11 @@ class Solution(object):
         for i in moves:
             if i == 'U':
                 vertical += 1
-            if i == 'D':
+            elif i == 'D':
                 vertical -= 1
-            if i == "L":
+            elif i == "L":
                 horizontal += 1
-            if i == "R":
+            elif i == "R":
                 horizontal -= 1
         
         if ((vertical == 0) and (horizontal == 0)):
