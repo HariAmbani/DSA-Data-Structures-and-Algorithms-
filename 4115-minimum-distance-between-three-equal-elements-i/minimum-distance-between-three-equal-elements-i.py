@@ -16,10 +16,7 @@ class Solution(object):
         for j in num_dict.values():
             if len(j) > 2:
                 for k in range(len(j)-2):
-                    a = j[k+1]-j[k]
-                    b = j[k+2]-j[k+1]
-                    c = j[k+2]-j[k]
-                    maxi = min(maxi, a+b+c)
+                    maxi = min(maxi, (j[k+1]-j[k])+(j[k+2]-j[k+1])+(j[k+2]-j[k]))
         
         if maxi == float('inf'):
             return -1
