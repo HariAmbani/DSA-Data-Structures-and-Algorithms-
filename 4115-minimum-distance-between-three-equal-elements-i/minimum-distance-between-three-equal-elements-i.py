@@ -16,9 +16,9 @@ class Solution(object):
         for j in num_dict.values():
             if len(j) > 2:
                 for k in range(len(j)-2):
-                    a = abs(j[k+1]-j[k])
-                    b = abs(j[k+2]-j[k+1])
-                    c = abs(j[k+2]-j[k])
+                    a = j[k+1]-j[k]
+                    b = j[k+2]-j[k+1]
+                    c = j[k+2]-j[k]
                     maxi = min(maxi, a+b+c)
         
         if maxi == float('inf'):
