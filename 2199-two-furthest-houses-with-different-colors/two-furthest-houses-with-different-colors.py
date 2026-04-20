@@ -11,11 +11,10 @@ class Solution(object):
         j = n
 
         while i < j:
-            start = i
             end = j
-            while end-start > ans:
-                if colors[start] != colors[end-1]:
-                    ans = max(ans, abs(start-end)-1)
+            while end-i > ans:
+                if colors[i] != colors[end-1]:
+                    ans = max(ans, abs(i-end)-1)
                 end -= 1
             i += 1
             j = n
