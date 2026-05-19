@@ -5,7 +5,8 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: int
         """
-        ans = -1
+        if ((nums1[0] > nums2[-1]) or (nums1[-1] < nums2[0])):
+            return -1
 
         for i in nums1:
             for j in nums2:
