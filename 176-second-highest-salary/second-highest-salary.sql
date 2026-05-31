@@ -1,3 +1,4 @@
 select (select distinct salary 
-from Employee 
-order by salary desc limit 1, 1) as SecondHighestSalary
+from employee 
+order by salary desc 
+limit 1,1) as SecondHighestSalary
