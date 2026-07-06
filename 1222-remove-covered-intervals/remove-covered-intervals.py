@@ -6,7 +6,7 @@ class Solution(object):
         """
         intervals.sort(key=lambda x:(x[0], -x[1]))
         n = len(intervals)
-                
+
         ans = n
 
         i = 0
@@ -20,11 +20,9 @@ class Solution(object):
                     while ((j < n) and (intervals[j][1] <= intervals[i][1])):
                         j += 1
                         ans -= 1
-                    if j != n:
-                        changed = 0
                     i = j
                 else:
-                    i += 2
+                    break
             else:
                 i += 1
         
